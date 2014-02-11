@@ -11,10 +11,22 @@
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css"> <!-- optional | may remove later -->
 
+        <style>
+            .IN-widget {
+                color: #fff;
+                float: right;
+                margin-top: 15px;
+            }
+        </style>
+
         <!--[if lt IE 9]>
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
+        <script type="text/javascript" src="http://platform.linkedin.com/in.js">
+            api_key: 75otiglake8w2c
+            authorize: true
+        </script>
 
     </head>
     <body>
@@ -30,22 +42,16 @@
                     <a class="navbar-brand" href="#">Project name</a>
                 </div>
                 <div class="navbar-collapse collapse">
-                    <form class="navbar-form navbar-right" role="form">
-                        <div class="form-group">
-                            <input type="text" placeholder="Email" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" placeholder="Password" class="form-control">
-                        </div>
-                        <button type="submit" class="btn btn-success">Sign in</button>
-                    </form>
+                    <script type="in/Login">
+                        Hello, <?js= firstName ?> <?js= lastName ?>.
+                    </script>
                 </div><!--/.navbar-collapse -->
             </div>
         </div>
         <div class="jumbotron">
             <div class="container">
                 <h1>Hello, world!</h1>
-                <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet luctus turpis, quis pharetra neque hendrerit et. Nunc feugiat imperdiet mauris eu lobortis. Suspendisse arcu enim, vulputate et nibh et, aliquet vestibulum neque. Donec in odio vel nibh malesuada cursus quis non nunc. Quisque vehicula gravida magna, egestas tincidunt tortor dapibus et. Nullam lobortis, nunc eu aliquet commodo, augue ipsum malesuada arcu, id posuere elit ipsum imperdiet diam. Donec quis nunc urna. Donec interdum odio enim, sit amet faucibus nulla dictum quis. Pellentesque eu sem eget eros sagittis iaculis non sed magna. Quisque urna nibh, varius vitae dui nec, pretium porttitor metus.</p>
                 <p><a class="btn btn-primary btn-lg" role="button">Learn more »</a></p>
             </div>
         </div>
@@ -76,53 +82,43 @@
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
         <script>
 
+            var object = {};
+
+            (function(){
+                // BackboneJS Test/Example
+                _.extend(object, Backbone.Events);
+
+                object.on("template", function(msg) {
+                    //jQuery Test/Example
+                    $('a').html('jQuery hijacked your anchor tags');
+                });
+            }());
+
             (function(){
                 // Handlebars Test/Example
                 var data = [
                     {
                         title: 'Heading',
-                        body: 'Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',
+                        body: 'Nam id consequat sapien. Mauris varius quam et augue pellentesque, sit amet iaculis tortor feugiat. Phasellus fermentum, turpis scelerisque iaculis ullamcorper, tortor erat feugiat dolor, eget dapibus velit diam eu eros.',
                         url: '#'
                     },
                     {
                         title: 'Heading',
-                        body: 'Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',
+                        body: 'Nam id consequat sapien. Mauris varius quam et augue pellentesque, sit amet iaculis tortor feugiat. Phasellus fermentum, turpis scelerisque iaculis ullamcorper, tortor erat feugiat dolor, eget dapibus velit diam eu eros.',
                         url: '#'
                     },
                     {
                         title: 'Heading',
-                        body: 'Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',
+                        body: 'Nam id consequat sapien. Mauris varius quam et augue pellentesque, sit amet iaculis tortor feugiat. Phasellus fermentum, turpis scelerisque iaculis ullamcorper, tortor erat feugiat dolor, eget dapibus velit diam eu eros.',
                         url: '#'
                     }
                 ];
-
-                console.log(data);
 
                 var source = $('#3ColumnTemplate').html();
                 var template = Handlebars.compile(source);
                 var html = template(data);
                 $('#3ColumnContainer').html(html);
-            }());
-
-            (function(){
-                //jQuery Test/Example
-                $('a').html('jQuery hijacked your anchor tags');
-            }());
-
-            (function(){
-                // BackboneJS Test/Example
-                var object = {};
-
-                _.extend(object, Backbone.Events);
-
-                object.on("alert", function(msg) {
-                    alert("Triggered " + msg);
-                });
-
-                $('a').on('click', function(){
-                    object.trigger("alert", "an event");
-                    return false;
-                });
+                object.trigger("template", "rendered");
             }());
 
         </script>

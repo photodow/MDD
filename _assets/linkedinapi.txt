@@ -1,0 +1,17 @@
+Company:
+	Full Sail University
+
+Application Name:
+	MDD
+
+API Key:
+	75otiglake8w2c
+
+Secret Key:
+	lzXK3CXSgjQjyhpP
+
+OAuth User Token:
+	e5995a4e-0f4d-47b6-a18d-4508952e8b92
+
+OAuth User Secret:
+	e94078f9-ec32-4a09-b85b-5d8cf90051a6
