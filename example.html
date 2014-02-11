@@ -50,23 +50,17 @@
             </div>
         </div>
         <div class="container">
-            <div class="row">
+            <div class="row" id="3ColumnContainer"></div>
+
+            <script id="3ColumnTemplate" type="text/x-handlebars-template">
+                {{#each .}}
                 <div class="col-md-4">
-                    <h2>Heading</h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+                    <h2>{{title}}</h2>
+                    <p>{{body}}</p>
+                    <p><a class="btn btn-default" href="{{url}}" role="button">View details »</a></p>
                 </div>
-                    <div class="col-md-4">
-                    <h2>Heading</h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
-                </div>
-                <div class="col-md-4">
-                    <h2>Heading</h2>
-                    <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                    <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
-                </div>
-            </div>
+                {{/each}}
+            </script>
 
             <hr>
 
@@ -78,22 +72,59 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script src="/MDD/js/underscore-min.js"></script>
         <script src="/MDD/js/backbone-min.js"></script>
+        <script src="/MDD/js/handlebars-v1.3.0-min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
         <script>
-            var a = $('a');
-            a.html('jQuery hijacked your anchor tags');
 
-            var object = {};
+            (function(){
+                // Handlebars Test/Example
+                var data = [
+                    {
+                        title: 'Heading',
+                        body: 'Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',
+                        url: '#'
+                    },
+                    {
+                        title: 'Heading',
+                        body: 'Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',
+                        url: '#'
+                    },
+                    {
+                        title: 'Heading',
+                        body: 'Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',
+                        url: '#'
+                    }
+                ];
 
-            _.extend(object, Backbone.Events);
+                console.log(data);
 
-            object.on("alert", function(msg) {
-                alert("Triggered " + msg);
-            });
+                var source = $('#3ColumnTemplate').html();
+                var template = Handlebars.compile(source);
+                var html = template(data);
+                $('#3ColumnContainer').html(html);
+            }());
 
-            a.on('click', function(){
-                object.trigger("alert", "an event");
-            });
+            (function(){
+                //jQuery Test/Example
+                $('a').html('jQuery hijacked your anchor tags');
+            }());
+
+            (function(){
+                // BackboneJS Test/Example
+                var object = {};
+
+                _.extend(object, Backbone.Events);
+
+                object.on("alert", function(msg) {
+                    alert("Triggered " + msg);
+                });
+
+                $('a').on('click', function(){
+                    object.trigger("alert", "an event");
+                    return false;
+                });
+            }());
+
         </script>
 
     </body>
