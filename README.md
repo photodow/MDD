@@ -5,7 +5,7 @@ You may need to login/create your LinkedIn account upon arriving.
 MDD
 ===
 
-My Mobile Device Deployment project this month will be using the LinkedIn API to make a basic oAuth 2.0 authentication connection to your LinkedIn account and then displaying your professional stream in a mobile compatible website.
+My Mobile Device Deployment project this month will be using the LinkedIn API to make a basic oAuth 2.0 connection to your LinkedIn account and then displaying your professional stream in a mobile compatible website.
 
 Basic Requirements:
 <ul>
