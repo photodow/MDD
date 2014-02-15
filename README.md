@@ -1,3 +1,5 @@
+View Application: <a href="http://photodow.github.io/MDD/" target="_blank">http://photodow.github.io/MDD/</a>
+
 MDD
 ===
 
@@ -13,14 +15,22 @@ Basic Requirements:
 	<li>If Data Storage is necessary for your app use Firebase or Local Storage. (Other options require approval)</li>
 </ul>
 
-<a href="http://photodow.github.io/MDD/" target="_blank">http://photodow.github.io/MDD/</a>
-
 Instructions
 ===
 
 <a href="http://photodow.github.io/MDD/" target="_blank">Click Here</a> to launch the mobile application.
 
 You may need to login/create your LinkedIn account upon arriving.
+
+Technology
+===
+
+<ul>
+	<li><a href="developers.linkedin.com" target="_blank">API: LinkedIn</a></li>
+	<li>Client Side MVC: <a href="http://backbonejs.org/" target="_blank">Backbone.JS</a>, <a href="http://underscorejs.org/" target="_blank">Underscore.JS</a>, <a href="http://handlebarsjs.com/" target="_blank">Handlebars</a></li>
+	<li></li>
+	<li>JavaScript Library: <a href="http://jquery.com/" target="_blank">jQuery</a></li>
+</ul>
 
 Contact
 ===
