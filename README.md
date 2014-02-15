@@ -1,5 +1,7 @@
 View Application: <a href="http://photodow.github.io/MDD/" target="_blank">http://photodow.github.io/MDD/</a>
 
+You may need to login/create your LinkedIn account upon arriving.
+
 MDD
 ===
 
@@ -14,13 +16,6 @@ Basic Requirements:
 	<li>Ties into an API of your choice (Good API Review, Directory,  and Idea Site)</li>
 	<li>If Data Storage is necessary for your app use Firebase or Local Storage. (Other options require approval)</li>
 </ul>
-
-Instructions
-===
-
-<a href="http://photodow.github.io/MDD/" target="_blank">Click Here</a> to launch the mobile application.
-
-You may need to login/create your LinkedIn account upon arriving.
 
 Technology
 ===
