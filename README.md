@@ -5,6 +5,8 @@ View Application: <a href="http://photodow.github.io/MDD/" target="_blank">http:
 
 You may need to login/create your LinkedIn account upon arriving.
 
+To see the full effect of what I'm trying to accomplish this month please view this application on an iPhone/iPad, or in an iPhone/iPad emulator.
+
 MDD
 ===
 
