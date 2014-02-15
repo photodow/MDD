@@ -28,7 +28,6 @@ Technology
 <ul>
 	<li><a href="developers.linkedin.com" target="_blank">API: LinkedIn</a></li>
 	<li>Client Side MVC: <a href="http://backbonejs.org/" target="_blank">Backbone.JS</a>, <a href="http://underscorejs.org/" target="_blank">Underscore.JS</a>, <a href="http://handlebarsjs.com/" target="_blank">Handlebars</a></li>
-	<li></li>
 	<li>JavaScript Library: <a href="http://jquery.com/" target="_blank">jQuery</a></li>
 </ul>
 
