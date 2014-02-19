@@ -1,4 +1,0 @@
-MDD
-===
-
-Mobile Device Deployment
