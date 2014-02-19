@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css"> <!-- optional | may remove later -->
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-        <link rel="stylesheet" href="/MDD/css/app.css">
+        <link rel="stylesheet" href="/MDD/css/main.css">
 
         <!--[if lt IE 9]>
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -20,14 +20,13 @@
 
         <script type="text/javascript" src="http://platform.linkedin.com/in.js">
             api_key: 75otiglake8w2c
-            onLoad: LinkedIn
             authorize: true
         </script>
 
     </head>
     <body>
 
-        <section class="container">
+        <section id="pageContainer" class="container">
             <div class="row">
                 <div class="col-md-12">
                     <p id="linkedInLogin">
@@ -38,11 +37,12 @@
         </section>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script src="/MDD/js/underscore-min.js"></script>
-        <script src="/MDD/js/backbone-min.js"></script>
-        <script src="/MDD/js/handlebars-v1.3.0-min.js"></script>
+        <script src="/MDD/js/lib/underscore-min.js"></script>
+        <script src="/MDD/js/lib/handlebars-v1.3.0-min.js"></script>
+        <script src="/MDD/js/lib/backbone-min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
         <script src="/MDD/js/app.js"></script>
+        <script src="/MDD/js/routers.js"></script>
 
     </body>
 </html>
