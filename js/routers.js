@@ -2,17 +2,18 @@ function Routers () {
 
     'use strict';
 
-    var init, PageRouters, page, redirectLogin, redirectMenu;
+    var init, PageRouters, redirectLogin, redirectMenu;
 
     redirectLogin = function () {
+        console.log('user is not logged in, redirect');
 
-        page.navigate('//login', { trigger: true });
+        app.pageRoute.navigate('//login', { trigger: true });
 
     }
 
     redirectMenu = function () {
 
-        page.navigate('//menu', { trigger: true });
+        app.pageRoute.navigate('//menu', { trigger: true });
 
     };
 
@@ -21,20 +22,24 @@ function Routers () {
         routes: {
             "login(/)": "login",
             "menu(/)": "menu",
-            "profile(/:id)": "profile",
+            "profile(/)(:id)": "profile",
             "stream(/)": "stream",
             "*path": "notFound"
         },
 
         login: function () {
 
-            app.checkAuth(redirectMenu, true);
+            app.checkAuth(redirectMenu, function(){
+                app.views.LoginPage.render();
+            });
 
         },
 
         menu: function () {
 
-            app.checkAuth(redirectLogin, false);
+            app.checkAuth(function(){
+                app.views.MenuPage.render();
+            }, redirectLogin);
 
         },
 
@@ -48,13 +53,17 @@ function Routers () {
                     console.log('current user profile');
                 }
 
+                app.views.ProfilePage.render();
+
             }, redirectLogin);
 
         },
 
         stream: function () {
 
-            app.checkAuth(redirectLogin, false);
+            app.checkAuth(function(){
+                app.views.StreamPage.render();
+            }, redirectLogin);
 
         },
 
@@ -68,12 +77,12 @@ function Routers () {
 
     init = function () {
 
-        page = new PageRouters();
+        app.pageRoute = new PageRouters();
 
         app.inOnLogout(function(){ redirectLogin(); });
         app.inOnLogin(function(){ redirectMenu(); });
 
-        Backbone.history.start();
+        Backbone.history.start({ root : "/MDD" });
 
     };
 
