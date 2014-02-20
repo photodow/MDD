@@ -1,4 +1,4 @@
-function Routers () {
+(function(){
 
     'use strict';
 
@@ -88,6 +88,4 @@ function Routers () {
 
     init();
 
-}
-
-Routers();
+}());
