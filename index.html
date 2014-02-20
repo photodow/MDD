@@ -26,23 +26,65 @@
     </head>
     <body>
 
-        <section id="pageContainer" class="container">
+        <section id="pageContainer" class="container"></section>
+
+        <script type="text/template" id="loginTemplate">
             <div class="row">
                 <div class="col-md-12">
                     <p id="linkedInLogin">
-                        <button type="button" class="btn btn-default"></button>
+                        <button type="button" class="btn btn-default">Sign in with LinkedIn <i class="fa fa-arrow-circle-o-right"></i></button>
                     </p>
                 </div>
             </div>
-        </section>
+        </script>
+
+        <script type="text/template" id="menuTemplate">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>
+                        <ul>
+                            <li><a href="#/menu">menu</a></li>
+                            <li><a href="#/profile">my profile</a></li>
+                            <li><a href="#/stream">professional stream</a></li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+        </script>
+
+        <script type="text/template" id="profileTemplate">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>
+                        profile
+                    </p>
+                </div>
+            </div>
+        </script>
+
+        <script type="text/template" id="streamTemplate">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>
+                        stream
+                    </p>
+                </div>
+            </div>
+        </script>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script src="/MDD/js/lib/underscore-min.js"></script>
         <script src="/MDD/js/lib/handlebars-v1.3.0-min.js"></script>
         <script src="/MDD/js/lib/backbone-min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+        
         <script src="/MDD/js/app.js"></script>
         <script src="/MDD/js/routers.js"></script>
+
+        <script src="/MDD/js/view/login.js"></script>
+        <script src="/MDD/js/view/menu.js"></script>
+        <script src="/MDD/js/view/profile.js"></script>
+        <script src="/MDD/js/view/stream.js"></script>
 
     </body>
 </html>
