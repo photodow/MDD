@@ -14,3 +14,9 @@ h2 {
 	text-align: center;
 	margin-top: 225px;
 }
+
+img {
+	border-radius: 50%;
+	margin: 12px auto;
+	width: 80px;
+}

@@ -4,7 +4,7 @@
 
         el: $('#pageContainer'),
 
-        template: _.template($("#menuTemplate").html()),
+        template: Handlebars.compile($("#menuTemplate").html()),
 
         events: { },
 

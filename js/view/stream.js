@@ -4,7 +4,7 @@
 
         el: $('#pageContainer'),
 
-        template: _.template($("#streamTemplate").html()),
+        template: Handlebars.compile($("#streamTemplate").html()),
 
         events: { },
 
@@ -12,7 +12,7 @@
 
         render: function () {
 
-            this.$el.html(this.template);
+            this.$el.html(this.template(app.models.StreamData));
             return this;
 
         }

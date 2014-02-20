@@ -4,7 +4,7 @@
 
     	el: $('#pageContainer'),
 
-	    template: _.template($("#loginTemplate").html()),
+	    template: Handlebars.compile($("#loginTemplate").html()),
 
 	    events: {
 	    	'click #linkedInLogin button': 'login'

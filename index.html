@@ -71,21 +71,22 @@
                     <div class="col-md-12">
                         <ul class="list-group">
                             <li class="list-group-item">
-                                <strong>Name:</strong>
+                                <strong>Name:</strong> {{firstName}} {{lastName}}
                             </li>
                             <li class="list-group-item">
-                                <strong>Job Title:</strong>
+                                <strong>Job Title:</strong> {{headline}}
                             </li>
                             <li class="list-group-item">
-                                <strong>Location:</strong>
+                                <strong>Location:</strong> {{location.name}}
                             </li>
                         </ul>
                     </div>
                 </article>
                 <article class="row">
                     <div class="col-md-12">
+                        <img src="{{pictureUrl}}" alt="{{firstName}} {{lastName}}" />
                         <h2>Summary</h2>
-                        <p>...</p>
+                        <p>{{summary}}</p>
                     </div>
                 </article>
             </section>
@@ -106,9 +107,11 @@
             <section class="row">
                 <div class="col-md-12">
                     <ul class="list-group">
+                        {{#each .}}
                         <li class="list-group-item">
-                            <p>Update Comment by Person</p>
+                            <p>{{updateContent.person.currentShare.comment}} <a href="{{updateContent.person.currentShare.content.shortenedUrl}}" target="_blank">{{updateContent.person.currentShare.content.title}}</a> <strong>by {{updateContent.person.firstName}} {{updateContent.person.lastName}}</strong></p>
                         </li>
+                        {{/each}}
                     </ul>
                 </div>
             </section>

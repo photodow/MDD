@@ -47,11 +47,11 @@
 
             app.checkAuth(function(){
 
-                if(id !== null){
+                /*if(id !== null){
                     console.log(id + ' profile');
                 }else{
                     console.log('current user profile');
-                }
+                }*/
 
                 app.views.ProfilePage.render();
 

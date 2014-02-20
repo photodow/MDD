@@ -85,53 +85,28 @@ var app = {
 
     },
 
-    views: {}
+    views: {},
+
+    models: {}
 
 };
 
 
+// temporary models examples to populate views for now
 
+app.inOnLoad(function(){
+    app.checkAuth(function(){
 
-
-/*app.inOnLoad(function(){
-
-    'use strict';
-
-    var linkedInLogin;
-
-    linkedInLogin = $('#linkedInLogin');
-
-    function toggleBtn() {
-
-        var loginBtn, loginHTML, logoutHTML;
-
-        loginHTML = 'Sign in with LinkedIn <i class="fa fa-arrow-circle-o-right"></i>';
-        logoutHTML = 'Logout of LinkedIn <i class="fa fa-sign-out"></i>';
-        loginBtn = linkedInLogin.find('button');
-
-        app.checkAuth(function () {
-            loginBtn.html(logoutHTML);
-        }, function () {
-            loginBtn.html(loginHTML);
+        IN.API.Raw('/people/~:(first-name,last-name,headline,location:(name),summary,picture-url)').result(function(data){
+            app.models.ProfileData = data;
         });
 
-    }
-
-    linkedInLogin.on('mousedown', 'button', function () {
-
-        app.checkAuth(function () {
-            IN.User.logout(function () {
-                toggleBtn();
-            });
-        }, function () {
-            IN.User.authorize(function () {
-                toggleBtn();
-            });
+        IN.API.Raw('/people/~/network/updates?type=SHAR&count=50&start=0').result(function(data){
+            data = data.values;
+            app.models.StreamData = data;
         });
 
-        return false;
-    });
 
-    toggleBtn();
+    }, true);
+});
 
-});*/
