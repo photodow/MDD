@@ -1,7 +1,5 @@
 var app = {
 
-    root: '/MDD/#',
-
     inOnLoad: function (doThis) {
 
         'use strict';
@@ -85,7 +83,9 @@ var app = {
 
         });
 
-    }
+    },
+
+    views: {}
 
 };
 
@@ -93,7 +93,7 @@ var app = {
 
 
 
-app.inOnLoad(function(){
+/*app.inOnLoad(function(){
 
     'use strict';
 
@@ -134,4 +134,4 @@ app.inOnLoad(function(){
 
     toggleBtn();
 
-});
+});*/
