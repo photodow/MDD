@@ -39,37 +39,47 @@
         </script>
 
         <script type="text/template" id="menuTemplate">
-            <div class="row">
-                <div class="col-md-12">
-                    <p>
-                        <ul>
-                            <li><a href="#/menu">menu</a></li>
-                            <li><a href="#/profile">my profile</a></li>
-                            <li><a href="#/stream">professional stream</a></li>
-                        </ul>
-                    </p>
-                </div>
-            </div>
+            <section class="row">
+                <nav class="col-md-12">
+                    <h1>Menu</h1>
+                </nav>
+            </section>
+            <section class="row">
+                <nav class="col-md-12">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="#/profile">my profile</a></li>
+                        <li><a href="#/stream">professional stream</a></li>
+                    </ul>
+                </nav>
+            </section>
         </script>
 
         <script type="text/template" id="profileTemplate">
-            <div class="row">
-                <div class="col-md-12">
-                    <p>
-                        profile
-                    </p>
-                </div>
-            </div>
+            <header class="row">
+                <nav class="col-md-12">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li>
+                            <h1>
+                                <a href="#/menu"><i class="fa fa-arrow-circle-o-left"></i> My Profile</a>
+                            </h1>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
         </script>
 
         <script type="text/template" id="streamTemplate">
-            <div class="row">
-                <div class="col-md-12">
-                    <p>
-                        stream
-                    </p>
-                </div>
-            </div>
+            <header class="row">
+                <nav class="col-md-12">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li>
+                            <h1>
+                                <a href="#/menu"><i class="fa fa-arrow-circle-o-left"></i> Professional Stream</a>
+                            </h1>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
         </script>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -77,7 +87,7 @@
         <script src="/MDD/js/lib/handlebars-v1.3.0-min.js"></script>
         <script src="/MDD/js/lib/backbone-min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-        
+
         <script src="/MDD/js/app.js"></script>
         <script src="/MDD/js/routers.js"></script>
 
