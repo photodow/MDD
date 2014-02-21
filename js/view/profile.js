@@ -10,9 +10,14 @@
 
         initialize: function () { },
 
-        render: function () {
+        render: function (id) {
 
-            this.$el.html(this.template(app.models.ProfileData));
+            var that = this;
+
+            IN.API.Raw('/people/' + id + ':(first-name,last-name,headline,location:(name),summary,picture-url)').result(function(data){
+                that.$el.html(that.template(data));
+            });
+
             return this;
 
         }

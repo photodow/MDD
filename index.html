@@ -19,8 +19,8 @@
         <![endif]-->
 
         <script type="text/javascript" src="http://platform.linkedin.com/in.js">
-            api_key: 75otiglake8w2c
-            authorize: true
+                api_key: 75otiglake8w2c
+                authorize: true
         </script>
 
     </head>
@@ -49,6 +49,7 @@
                     <ul class="nav nav-pills nav-stacked">
                         <li><a href="#/profile">my profile</a></li>
                         <li><a href="#/stream">professional stream</a></li>
+                        <li><a href="#/logout">logout</a></li>
                     </ul>
                 </nav>
             </section>
@@ -109,7 +110,13 @@
                     <ul class="list-group">
                         {{#each .}}
                         <li class="list-group-item">
-                            <p>{{updateContent.person.currentShare.comment}} <a href="{{updateContent.person.currentShare.content.shortenedUrl}}" target="_blank">{{updateContent.person.currentShare.content.title}}</a> <strong>by {{updateContent.person.firstName}} {{updateContent.person.lastName}}</strong></p>
+                            <p><a href="#/profile/{{updateContent.person.id}}"><img src="{{updateContent.person.pictureUrl}}" alt="{{updateContent.person.firstName}} {{updateContent.person.lastName}}"> <strong>{{updateContent.person.firstName}} {{updateContent.person.lastName}}</a></strong></p>
+                            {{#if updateContent.person.currentShare.comment}}
+                            <p>{{updateContent.person.currentShare.comment}}</p>
+                            {{/if}}
+                            {{#if updateContent.person.currentShare.content}}
+                            <p><a href="{{updateContent.person.currentShare.content.shortenedUrl}}" target="_blank">{{updateContent.person.currentShare.content.title}}</a></p>
+                            {{/if}}
                         </li>
                         {{/each}}
                     </ul>

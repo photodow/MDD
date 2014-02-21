@@ -5,7 +5,6 @@
     var init, PageRouters, redirectLogin, redirectMenu;
 
     redirectLogin = function () {
-        console.log('user is not logged in, redirect');
 
         app.pageRoute.navigate('//login', { trigger: true });
 
@@ -24,6 +23,7 @@
             "menu(/)": "menu",
             "profile(/)(:id)": "profile",
             "stream(/)": "stream",
+            "logout(/)": "logout",
             "*path": "notFound"
         },
 
@@ -32,6 +32,14 @@
             app.checkAuth(redirectMenu, function(){
                 app.views.LoginPage.render();
             });
+
+        },
+
+        logout: function() {
+
+            app.checkAuth(function(){
+                IN.User.logout();
+            }, redirectLogin);
 
         },
 
@@ -47,13 +55,13 @@
 
             app.checkAuth(function(){
 
-                /*if(id !== null){
-                    console.log(id + ' profile');
+                if(id === null){
+                    id = '~';
                 }else{
-                    console.log('current user profile');
-                }*/
+                    id = 'id=' + id;
+                }
 
-                app.views.ProfilePage.render();
+                app.views.ProfilePage.render(id);
 
             }, redirectLogin);
 
@@ -81,8 +89,9 @@
 
         app.inOnLogout(function(){ redirectLogin(); });
         app.inOnLogin(function(){ redirectMenu(); });
+        app.pageRoute.on('route', function(){ window.scrollTo(0,0); });
 
-        Backbone.history.start({ root : "/MDD" });
+        Backbone.history.start({ root : "/MDD/" });
 
     };
 

@@ -87,26 +87,11 @@ var app = {
 
     views: {},
 
-    models: {}
+    models: {},
+
+    events: {}
 
 };
 
-
-// temporary models examples to populate views for now
-
-app.inOnLoad(function(){
-    app.checkAuth(function(){
-
-        IN.API.Raw('/people/~:(first-name,last-name,headline,location:(name),summary,picture-url)').result(function(data){
-            app.models.ProfileData = data;
-        });
-
-        IN.API.Raw('/people/~/network/updates?type=SHAR&count=50&start=0').result(function(data){
-            data = data.values;
-            app.models.StreamData = data;
-        });
-
-
-    }, true);
-});
+_.extend(app.events, Backbone.Events);
 

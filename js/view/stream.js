@@ -12,7 +12,15 @@
 
         render: function () {
 
-            this.$el.html(this.template(app.models.StreamData));
+            var that = this;
+
+
+            IN.API.Raw('/people/~/network/updates?type=SHAR&count=50&start=0').result(function(data){
+                data = data.values;
+                that.$el.html(that.template(data));
+                console.log(data);
+            });
+
             return this;
 
         }
