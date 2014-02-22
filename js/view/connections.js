@@ -1,10 +1,10 @@
 (function(){
 
-    var StreamView = Backbone.View.extend({
+    var ConnectionsView = Backbone.View.extend({
 
         el: $('#pageContainer'),
 
-        template: Handlebars.compile($("#streamTemplate").html()),
+        template: Handlebars.compile($("#connectionsTemplate").html()),
 
         events: { },
 
@@ -14,7 +14,7 @@
 
             var that = this;
 
-            IN.API.Raw('/people/~/network/updates?type=SHAR&count=50&start=0').result(function(data){
+            IN.API.Raw('/people/~/connections').result(function(data){
                 data = data.values;
                 that.$el.html(that.template(data));
             });
@@ -25,6 +25,6 @@
 
     });
 
-    app.views.StreamPage = new StreamView();
+    app.views.ConnectionsPage = new ConnectionsView();
 
 }());

@@ -20,10 +20,11 @@
 
         routes: {
             "login(/)": "login",
+            "logout(/)": "logout",
             "menu(/)": "menu",
             "profile(/)(:id)": "profile",
             "stream(/)": "stream",
-            "logout(/)": "logout",
+            "connections(/)": "connections",
             "*path": "notFound"
         },
 
@@ -71,6 +72,14 @@
 
             app.checkAuth(function(){
                 app.views.StreamPage.render();
+            }, redirectLogin);
+
+        },
+
+        connections: function () {
+
+            app.checkAuth(function(){
+                app.views.ConnectionsPage.render();
             }, redirectLogin);
 
         },
