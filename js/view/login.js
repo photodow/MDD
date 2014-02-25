@@ -7,7 +7,7 @@
 	    template: Handlebars.compile($("#loginTemplate").html()),
 
 	    events: {
-	    	'click #linkedInLogin button': 'login'
+	    	'click #login': 'login'
 	    },
 
 	    initialize: function () { },
@@ -20,9 +20,10 @@
 	    },
 
 	    login: function () {
-	        app.inOnLoad(function(){
-	        	IN.User.authorize();
-	        });
+	    	$('#login p').html('<i class="fa fa-spinner fa-spin" style="font-size: 2em;"></i>');
+        	IN.User.authorize(function(){
+        		app.pageRoute.navigate('//menu', { trigger: true });
+        	});
 	    }
 
 	});

@@ -97,7 +97,7 @@
         app.pageRoute = new PageRouters();
 
         app.inOnLogout(function(){ redirectLogin(); });
-        app.inOnLogin(function(){ redirectMenu(); });
+        //app.inOnLogin(function(){ redirectMenu(); });
         app.pageRoute.on('route', function(){ window.scrollTo(0,0); });
 
         Backbone.history.start({ root : "/MDD/" });
