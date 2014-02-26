@@ -25,8 +25,25 @@
 
     </head>
     <body>
-
         <div id="pageContainer"></div>
+
+        <script type="text/template" id="headerTemplate">
+            <header id="header" class="clearfix navbar-fixed-top">
+                <div class="brand">
+                    <a href="#/menu">
+                        <i class="fa fa-linkedin"></i>
+                    </a>
+                </div>
+                <div class="search disabled">
+                    <input type="button" value="search people..." />
+                </div>
+                <div class="update disabled">
+                    <a href="#/update">
+                        <i class="fa fa-comment"></i>
+                    </a>
+                </div>
+            </header>
+        </script>
 
         <script type="text/template" id="loginTemplate">
             <button type="button" id="login">
@@ -36,73 +53,92 @@
         </script>
 
         <script type="text/template" id="menuTemplate">
-            <header class="row">
-                <nav class="col-md-12">
-                    <h1>Menu</h1>
-                </nav>
-            </header>
-            <section class="row">
-                <nav class="col-md-12">
-                    <ul class="nav nav-pills nav-stacked">
-                        <li><a href="#/profile">my profile</a></li>
-                        <li><a href="#/stream">professional stream</a></li>
-                        <li><a href="#/connections">my connections</a></li>
-                        <li><a href="#/logout">logout</a></li>
-                    </ul>
-                </nav>
-            </section>
+            {{> header}}
+            <nav id="menuMain">
+                <ul class="icons offsetHeader">
+                    <li><a href="#/stream"><i class="fa fa-comments"></i></a></li>
+                    <li><a href="#/profile"><i class="fa fa-user"></i></a></li>
+                    <li><a href="#/connections"><i class="fa fa-users"></i></a></li>
+                    <li class="disabled"><a href="#/search"><i class="fa fa-search"></i></a></li>
+                    <li class="disabled"><a href="#/update"><i class="fa fa-comment"></i></a></li>
+                    <li class="disabled"><a href="#/message"><i class="fa fa-envelope"></i></a></li>
+                    <li><a href="#/logout"><i class="fa fa-sign-out"></i></a></li>
+                </ul>
+                <ul class="text offsetHeader">
+                    <li><a href="#/stream">Professional Stream</a></li>
+                    <li><a href="#/profile">My Profile</a></li>
+                    <li><a href="#/connections">Connections</a></li>
+                    <li class="disabled"><a href="#/search">Search People</a></li>
+                    <li class="disabled"><a href="#/update">Share Update</a></li>
+                    <li class="disabled"><a href="#/message">Send Message</a></li>
+                    <li><a href="#/logout">Sign Out</a></li>
+                </ul>
+            </nav>
         </script>
 
         <script type="text/template" id="profileTemplate">
-            <header class="row">
-                <nav class="col-md-12">
-                    <ul class="nav nav-pills nav-stacked">
-                        <li>
-                            <h1>
-                                <a href="#/menu"><i class="fa fa-arrow-circle-o-left"></i> My Profile</a>
-                            </h1>
-                        </li>
-                    </ul>
-                </nav>
-            </header>
-            <section>
-                <article class="row">
-                    <div class="col-md-12">
-                        <ul class="list-group">
-                            <li class="list-group-item">
-                                <strong>Name:</strong> {{firstName}} {{lastName}}
-                            </li>
-                            <li class="list-group-item">
-                                <strong>Job Title:</strong> {{headline}}
-                            </li>
-                            <li class="list-group-item">
-                                <strong>Location:</strong> {{location.name}}
-                            </li>
-                        </ul>
-                    </div>
+            {{> header}}
+            <section id="profile" class="offsetHeader">
+                <article class="card clearfix">
+                    <img src="{{pictureUrl}}" alt="{{firstName}} {{lastName}}" />
+                    <h2>{{firstName}} {{lastName}}</h2>
+                    {{#if headline}}
+                        <p class="headline">{{headline}}</p>
+                    {{/if}}
+                    {{#if location.name}}
+                        <address>{{location.name}}</address>
+                    {{/if}}
+                    {{#if currentShare.comment}}
+                        <p class="comment"><i class="fa fa-quote-left"></i>{{currentShare.comment}}</p>
+                    {{/if}}
+                    <aside>
+                        <p class="numConnections"><span class="num">{{numConnections}}</span> Connections</p>
+                        <nav class="menu">
+                            <ul>
+                                <li class="disabled"><a href="#/message" target="_blank"><i class="fa fa-envelope"></i></a></li>
+                                {{#if primaryTwitterAccount}}
+                                    <li><a href="//twitter.com/{{primaryTwitterAccount.providerAccountName}}" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                {{/if}}
+                                <li><a href="{{publicProfileUrl}}" target="_blank"><i class="fa fa-linkedin-square"></i></a></li>
+                            </ul>
+                        </nav>
+                    </aside>
                 </article>
-                <article class="row">
-                    <div class="col-md-12">
-                        <img src="{{pictureUrl}}" alt="{{firstName}} {{lastName}}" />
-                        <h2>Summary</h2>
-                        <p>{{summary}}</p>
-                    </div>
-                </article>
+                {{#if summary}}
+                    <article class="summary">
+                        <h3>Summary</h3>
+                        <p>{{{formatParagraph summary}}}</p>
+                    </article>
+                {{/if}}
+                {{#if positions._total}}
+                    <article class="positions">
+                        <ul>
+                            {{#each positions.values}}
+                                <li class="position">
+                                    <h3>{{title}}</h3>
+                                    <ul class="details">
+                                        {{#if company.name}}
+                                        <li>{{company.name}}</li>
+                                        {{/if}}
+                                        {{#if isCurrent}}
+                                            <li>{{monthToText startDate.month}} {{startDate.year}} - Current</li>
+                                        {{else}}
+                                            <li>{{monthToText startDate.month}} {{startDate.year}} - {{monthToText endDate.month}} {{endDate.year}}</li>
+                                        {{/if}}
+                                    </ul>
+                                    {{#if summary}}
+                                        <p>{{{formatParagraph summary}}}</p>
+                                    {{/if}}
+                                </li>
+                            {{/each}}
+                        <ul>
+                    </article>
+                {{/if}}
             </section>
         </script>
 
         <script type="text/template" id="streamTemplate">
-            <header class="row">
-                <nav class="col-md-12">
-                    <ul class="nav nav-pills nav-stacked">
-                        <li>
-                            <h1>
-                                <a href="#/menu"><i class="fa fa-arrow-circle-o-left"></i> Professional Stream</a>
-                            </h1>
-                        </li>
-                    </ul>
-                </nav>
-            </header>
+            {{> header}}
             <section class="row">
                 <div class="col-md-12">
                     <ul class="list-group">
@@ -123,33 +159,30 @@
         </script>
 
         <script type="text/template" id="connectionsTemplate">
-            <header class="row">
-                <nav class="col-md-12">
-                    <ul class="nav nav-pills nav-stacked">
-                        <li>
-                            <h1>
-                                <a href="#/menu"><i class="fa fa-arrow-circle-o-left"></i> Connections</a>
-                            </h1>
-                        </li>
-                    </ul>
-                </nav>
-            </header>
-            <section class="row">
-                <div class="col-md-12">
-                    <ul class="list-group">
-                        {{#each .}}
-                        <li class="list-group-item">
-                            <a href="#/profile/{{id}}" style="display: block;">
-                                {{#if pictureUrl}}
-                                <img src="{{pictureUrl}}" alt="{{firstName}} {{lastName}}" />
+            {{> header}}
+            <section id="connections" class="offsetHeader">
+                <ul>
+                    {{#each .}}
+                    {{#handlePrivate .}}
+                    {{#if .}}
+                    <li>
+                        <a href="#/profile/{{id}}" style="display: block;">
+                            <img src="{{#if pictureUrl}}{{pictureUrl}}{{else}}/MDD/img/no-picture.png{{/if}}" alt="{{firstName}} {{lastName}}" />
+                            <div class="userDetails">
+                                <h2>{{firstName}} {{lastName}}</h2>
+                                {{#if headline}}
+                                <p>{{shortHeadline headline}}</p>
                                 {{/if}}
-                                <p>{{firstName}} {{lastName}}</p>
-                                <p>{{location.name}}</p>
-                            </a>
-                        </li>
-                        {{/each}}
-                    </ul>
-                </div>
+                                {{#if location.name}}
+                                <address>{{location.name}}</address>
+                                {{/if}}
+                            </div>
+                        </a>
+                    </li>
+                    {{/if}}
+                    {{/handlePrivate}}
+                    {{/each}}
+                </ul>
             </section>
         </script>
 

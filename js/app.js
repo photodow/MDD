@@ -95,3 +95,53 @@ var app = {
 
 _.extend(app.events, Backbone.Events);
 
+Handlebars.registerHelper('shortHeadline', function(headline){
+    var hLength = headline.length;
+
+    if(hLength > 35){
+        headline = headline.substr(0, 35).trim() + '...';
+    }
+
+    if(headline === '.' || headline === '--' || headline === '-'){
+        headline = false;
+    }
+
+    return headline;
+});
+
+Handlebars.registerHelper('handlePrivate', function(person, options){
+
+    if(person.firstName === 'private'){
+        person = false;
+    }
+
+    return options.fn(person);
+
+});
+
+Handlebars.registerHelper('formatParagraph', function(textBlock){
+
+    textBlock = "<p>" + textBlock + "</p>";
+    textBlock = textBlock.replace(/\r\n\r\n/g, "</p><p>").replace(/\n\n/g, "</p><p>");
+    //result = result.replace(/\r\n/g, "<br />").replace(/\n/g, "<br />");
+    return textBlock;
+
+});
+
+Handlebars.registerHelper('monthToText', function(numMonth, doWhat){
+
+    var months, textMonth;
+
+    months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    numMonth = numMonth - 1;
+
+    if(doWhat === 'full'){
+        textMonth = months[numMonth];
+    }else{
+        textMonth = months[numMonth].substr(0, 3);
+    }
+
+    return textMonth;
+
+});
+
