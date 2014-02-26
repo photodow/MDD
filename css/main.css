@@ -14,8 +14,8 @@ body, html {
 	height: 100%;
 }
 
-header#header {
-	padding: 20px 0 0;
+#header {
+	padding: 5px 0 0;
 	background-color: #007bb6;
 }
 
@@ -57,7 +57,7 @@ header#header {
 }
 
 .offsetHeader {
-	padding-top: 60px!important;
+	padding-top: 45px!important;
 }
 
 #menuMain {
