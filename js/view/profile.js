@@ -2,38 +2,66 @@
 
     var ProfileView = Backbone.View.extend({
 
+        model: app.models.profile,
+
         el: $('#pageContainer'),
 
-        template: Handlebars.compile($("#profileTemplate").html()),
+        template: function(data){
 
-        events: { },
+            var source, template;
 
-        initialize: function () { },
+            source = $("#profileTemplate").html();
+            template = Handlebars.compile(source);
 
-        render: function (id) {
+            this.$el.html(template(data));
+
+        },
+
+        render: function () {
 
             var that = this;
 
-            IN.API.Raw('/people/' + id + ':(first-name,last-name,headline,location:(name),summary,num-connections,id,picture-url,public-profile-url,primary-twitter-account,current-share,positions)').result(function(data){
-                var profileData = data;
+            app.events.on('dataLoaded', function(){
 
-                if(profileData.hasOwnProperty('pictureUrl')){
-                    IN.API.Raw('/people/' + profileData.id + '/picture-urls::(original)').result(function(data){
-                        renderView(data.values[0]);
-                    });
-                }else{
-                    renderView('/MDD/img/no-picture.png');
-                };
+                that.template(that.model.attributes);
+                app.events.off('dataLoaded');
 
-                function renderView(getPicture){
-                    profileData.pictureUrl = getPicture;
-                    Handlebars.registerPartial('header', $('#headerTemplate').html());
-                    that.$el.html(that.template(profileData));
-                }
             });
 
-            return this;
+            return that;
 
+        },
+
+        loadData: function(id){
+
+            var that = this;
+
+            if(id === null){
+                id = '~';
+            }else{
+                id = 'id=' + id;
+            }
+
+            IN.API.Raw('/people/' + id + ':(first-name,last-name,headline,location:(name),summary,num-connections,id,picture-url,public-profile-url,primary-twitter-account,current-share,positions,num-connections-capped)').result(function(data){
+
+                if(data.hasOwnProperty('pictureUrl')){
+                    IN.API.Raw('/people/' + data.id + '/picture-urls::(original)').result(function(picture){
+                        data.pictureUrl = picture.values[0];
+                        that.setData(data);
+                    });
+                }else{
+                    data.pictureUrl = '/MDD/img/no-picture.png';
+                    that.setData(data);
+                };
+
+            });
+
+        },
+
+        setData: function(data){
+            this.model.clear();
+            this.model.set(data);
+            app.events.trigger('dataLoaded');
         }
 
     });

@@ -16,7 +16,7 @@ var app = {
 
         'use strict';
 
-        app.inOnLoad(function(){
+        this.inOnLoad(function(){
 
             if (typeof param1 === 'function') {
 
@@ -85,9 +85,24 @@ var app = {
 
     },
 
+    registerPartials: function(){
+
+        this.checkAuth(function(){
+
+            Handlebars.registerPartial('header', $('#headerPartial').html());
+            Handlebars.registerPartial('person', $('#personPartial').html());
+            Handlebars.registerPartial('newConnection', $('#newConnectionPartial').html());
+            Handlebars.registerPartial('sharedUpdate', $('#sharedUpdatePartial').html());
+
+        }, true);
+
+    },
+
     views: {},
 
     models: {},
+
+    collections: {},
 
     events: {}
 
@@ -95,11 +110,21 @@ var app = {
 
 _.extend(app.events, Backbone.Events);
 
+app.registerPartials();
+
+Backbone.Collection.prototype.hasModel = function(modelRef){
+    return Boolean(this.get(modelRef));
+}
+
+Backbone.Collection.prototype.getAll = function(){
+    return this.models;
+}
+
 Handlebars.registerHelper('shortHeadline', function(headline){
     var hLength = headline.length;
 
-    if(hLength > 35){
-        headline = headline.substr(0, 35).trim() + '...';
+    if(hLength > 30){
+        headline = headline.substr(0, 30).trim() + '...';
     }
 
     if(headline === '.' || headline === '--' || headline === '-'){
@@ -128,6 +153,18 @@ Handlebars.registerHelper('formatParagraph', function(textBlock){
 
 });
 
+Handlebars.registerHelper('updateDescription', function(textBlock){
+
+    if(textBlock.length > 100){
+
+        textBlock = textBlock.substr(0, 100).trim() + '...';
+
+    }
+
+    return textBlock;
+
+});
+
 Handlebars.registerHelper('monthToText', function(numMonth, doWhat){
 
     var months, textMonth;
@@ -145,3 +182,10 @@ Handlebars.registerHelper('monthToText', function(numMonth, doWhat){
 
 });
 
+Handlebars.registerHelper('logger', function(obj){
+    console.log(obj);
+});
+
+Handlebars.registerHelper('getLength', function(obj){
+    return obj.length;
+});

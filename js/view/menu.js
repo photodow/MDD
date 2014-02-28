@@ -12,7 +12,6 @@
 
         render: function () {
 
-            Handlebars.registerPartial('header', $('#headerTemplate').html());
             this.$el.html(this.template);
             return this;
 

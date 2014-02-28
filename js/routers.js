@@ -55,15 +55,8 @@
         profile: function (id) {
 
             app.checkAuth(function(){
-
-                if(id === null){
-                    id = '~';
-                }else{
-                    id = 'id=' + id;
-                }
-
-                app.views.ProfilePage.render(id);
-
+                app.views.ProfilePage.loadData(id);
+                app.views.ProfilePage.render();
             }, redirectLogin);
 
         },
@@ -71,6 +64,7 @@
         stream: function () {
 
             app.checkAuth(function(){
+                app.views.StreamPage.loadData();
                 app.views.StreamPage.render();
             }, redirectLogin);
 
@@ -79,6 +73,7 @@
         connections: function () {
 
             app.checkAuth(function(){
+                app.views.ConnectionsPage.loadData();
                 app.views.ConnectionsPage.render();
             }, redirectLogin);
 
