@@ -189,3 +189,7 @@ Handlebars.registerHelper('logger', function(obj){
 Handlebars.registerHelper('getLength', function(obj){
     return obj.length;
 });
+
+Handlebars.registerHelper('pageTitle', function(){
+    return Backbone.history.fragment;
+});
