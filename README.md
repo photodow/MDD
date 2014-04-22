@@ -3,9 +3,9 @@ Instructions
 
 View Application: <a href="http://photodow.github.io/MDD/" target="_blank">http://photodow.github.io/MDD/</a>
 
-You may need to login/create your LinkedIn account upon arriving.
+You may need to login/create your LinkedIn account upon arriving. There is currently a bug in the LinkedIn Authentication process. If the login hangs up, close the pop up and refresh the application.
 
-To see the full effect of what I'm trying to accomplish this month please view this application on an iPhone/iPad, or in an iPhone/iPad emulator.
+To see the full effect of what I'm trying to accomplish this month please view this application on an iPhone, or in an iPhone emulator.
 
 MDD
 ===
@@ -15,7 +15,7 @@ My Mobile Device Deployment project this month will be using the LinkedIn API to
 Basic Requirements:
 <ul>
 	<li>Responsive Design</li>
-	<li>Designed for the newest iPhone and iPad. Emulators are available within Xcode.</li>
+	<li>Designed for the newest iPhone. Emulators are available within Xcode.</li>
 	<li>SPA</li>
 	<li>Client-side MVC or MV* (AngularJS, Backbone, Knockout JS, etc...)</li>
 	<li>Ties into an API of your choice (Good API Review, Directory,  and Idea Site)</li>
