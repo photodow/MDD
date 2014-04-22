@@ -26,7 +26,7 @@ Technology
 ===
 
 <ul>
-	<li><a href="developers.linkedin.com" target="_blank">LinkedIn</a></li>
+	<li><a href="http://developers.linkedin.com/" target="_blank">LinkedIn</a></li>
 	<li><a href="http://backbonejs.org/" target="_blank">Backbone.JS</a></li>
 	<li><a href="http://underscorejs.org/" target="_blank">Underscore.JS</a></li>
 	<li><a href="http://handlebarsjs.com/" target="_blank">Handlebars</a></li>
